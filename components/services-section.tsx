@@ -1,6 +1,6 @@
 "use client"
 
-import { Globe, Smartphone, Cloud, Lightbulb } from "lucide-react"
+import { Globe, Smartphone, Cloud, Lightbulb, Brain } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { useLanguage } from "@/components/language-provider"
 
@@ -27,6 +27,12 @@ export function ServicesSection() {
       gradient: "from-green-500 to-teal-500",
     },
     {
+      icon: Brain,
+      title: t("services.ai.title"),
+      description: t("services.ai.description"),
+      gradient: "from-indigo-500 to-purple-500",
+    },
+    {
       icon: Lightbulb,
       title: t("services.consulting.title"),
       description: t("services.consulting.description"),
@@ -42,7 +48,7 @@ export function ServicesSection() {
           <p className="text-xl text-accent font-medium">{t("services.subtitle")}</p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
           {services.map((service, index) => (
             <Card key={index} className="border-0 shadow-lg card-hover bg-white rounded-2xl overflow-hidden">
               <CardHeader className="text-center pb-4">

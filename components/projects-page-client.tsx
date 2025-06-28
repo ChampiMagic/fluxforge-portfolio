@@ -23,6 +23,7 @@ export function ProjectsPageClient() {
     { id: "web", label: t("projects.filter.web") },
     { id: "mobile", label: t("projects.filter.mobile") },
     { id: "cloud", label: t("projects.filter.cloud") },
+    { id: "ai", label: t("projects.filter.ai") },
   ]
 
   const allProjects = getProjectsByLanguage(language)

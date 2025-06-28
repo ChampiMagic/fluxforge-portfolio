@@ -5,7 +5,7 @@ export interface Project {
   longDescription: string
   image: string
   images: string[]
-  category: "web" | "mobile" | "cloud"
+  category: "web" | "mobile" | "cloud" | "ai"
   technologies: string[]
   liveUrl?: string
   githubUrl?: string

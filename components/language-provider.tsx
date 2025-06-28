@@ -49,6 +49,8 @@ const translations = {
     "services.mobile.description": "Native and cross-platform mobile applications",
     "services.cloud.title": "Cloud Solutions",
     "services.cloud.description": "Scalable cloud infrastructure and deployment",
+    "services.ai.title": "AI Development",
+    "services.ai.description": "Intelligent solutions powered by machine learning and artificial intelligence",
     "services.consulting.title": "Tech Consulting",
     "services.consulting.description": "Strategic technology guidance for your business",
 
@@ -89,6 +91,7 @@ const translations = {
     "projects.filter.web": "Web Development",
     "projects.filter.mobile": "Mobile Apps",
     "projects.filter.cloud": "Cloud Solutions",
+    "projects.filter.ai": "AI Development",
     "projects.results": "projects found",
     "projects.back": "Back to Home",
     "projects.search": "Search projects...",
@@ -118,6 +121,7 @@ const translations = {
     "common.web_development": "Web Development",
     "common.mobile_apps": "Mobile Apps",
     "common.cloud_solutions": "Cloud Solutions",
+    "common.ai_development": "AI Development",
     "common.consulting": "Consulting",
   },
   es: {
@@ -155,6 +159,8 @@ const translations = {
     "services.mobile.description": "Aplicaciones móviles nativas y multiplataforma",
     "services.cloud.title": "Soluciones Cloud",
     "services.cloud.description": "Infraestructura cloud escalable y despliegue",
+    "services.ai.title": "Desarrollo IA",
+    "services.ai.description": "Soluciones inteligentes impulsadas por machine learning e inteligencia artificial",
     "services.consulting.title": "Consultoría Tech",
     "services.consulting.description": "Orientación tecnológica estratégica para tu negocio",
 
@@ -196,6 +202,7 @@ const translations = {
     "projects.filter.web": "Desarrollo Web",
     "projects.filter.mobile": "Apps Móviles",
     "projects.filter.cloud": "Soluciones Cloud",
+    "projects.filter.ai": "Desarrollo IA",
     "projects.results": "proyectos encontrados",
     "projects.back": "Volver al Inicio",
     "projects.search": "Buscar proyectos...",
@@ -225,6 +232,7 @@ const translations = {
     "common.web_development": "Desarrollo Web",
     "common.mobile_apps": "Apps Móviles",
     "common.cloud_solutions": "Soluciones Cloud",
+    "common.ai_development": "Desarrollo IA",
     "common.consulting": "Consultoría",
   },
 }

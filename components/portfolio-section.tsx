@@ -14,13 +14,14 @@ export function PortfolioSection() {
   const { t, language } = useLanguage()
 
   // ---- State & Filtering ----
-  const [activeFilter, setActiveFilter] = useState<"all" | "web" | "mobile" | "cloud">("all")
+  const [activeFilter, setActiveFilter] = useState<"all" | "web" | "mobile" | "cloud" | "ai">("all")
 
   const filters = [
     { id: "all", label: t("projects.filter.all") },
     { id: "web", label: t("projects.filter.web") },
     { id: "mobile", label: t("projects.filter.mobile") },
     { id: "cloud", label: t("projects.filter.cloud") },
+    { id: "ai", label: t("projects.filter.ai") },
   ] as const
 
   const allProjects = getProjectsByLanguage(language)

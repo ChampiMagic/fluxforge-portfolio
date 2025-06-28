@@ -8,9 +8,9 @@ export function AboutSection() {
 
   const stats = [
     { icon: Award, value: "5+", label: t("about.experience") },
-    { icon: Code, value: "100+", label: t("about.projects") },
-    { icon: Users, value: "50+", label: t("about.clients") },
-    { icon: Zap, value: "99%", label: t("about.success") },
+    { icon: Code, value: "1+", label: t("about.projects") },
+    { icon: Users, value: "1+", label: t("about.clients") },
+    { icon: Zap, value: "100%", label: t("about.success") },
   ]
 
   return (

@@ -33,9 +33,11 @@ export function HeroSection() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button className="btn-primary group">
-              {t("hero.cta.primary")}
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            <Button className="btn-primary group" asChild>
+              <Link href="#contact">
+                {t("hero.cta.primary")}
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Link>
             </Button>
 
             <Button variant="outline" className="btn-outline group bg-transparent" asChild>

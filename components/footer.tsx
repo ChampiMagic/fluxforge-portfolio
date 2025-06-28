@@ -89,6 +89,9 @@ export function Footer() {
                 <span className="text-gray-300">{t("common.cloud_solutions")}</span>
               </li>
               <li>
+                <span className="text-gray-300">{t("common.ai_development")}</span>
+              </li>
+              <li>
                 <span className="text-gray-300">{t("common.consulting")}</span>
               </li>
             </ul>
