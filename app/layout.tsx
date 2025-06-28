@@ -23,6 +23,33 @@ export const metadata: Metadata = {
   description: "Modern software development solutions for your business. We create innovative digital experiences.",
   keywords: "software development, web development, mobile apps, digital solutions",
   authors: [{ name: "FluxForge" }],
+  
+  // Configuración completa de favicons e iconos
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: '16x16 32x32', type: 'image/x-icon' },
+      { url: '/favicons/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicons/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicons/android-chrome-192x192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/favicons/android-chrome-512x512.png', sizes: '512x512', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/favicons/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+    shortcut: '/favicon.ico',
+  },
+  
+  // Configuración de manifest para PWA
+  manifest: '/manifest.json',
+  
+  // Configuración de Apple Touch Icons
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'FluxForge Portfolio',
+  },
+  
+  // Configuración de Open Graph
   openGraph: {
     title: "FluxForge - Software Development Agency",
     description: "Modern software development solutions for your business",
@@ -30,7 +57,7 @@ export const metadata: Metadata = {
     siteName: "FluxForge",
     images: [
       {
-        url: "/images/og-image.jpg",
+        url: "/images/fluxforge-logo.png",
         width: 1200,
         height: 630,
         alt: "FluxForge - Software Development Agency",
@@ -39,12 +66,17 @@ export const metadata: Metadata = {
     locale: "en_US",
     type: "website",
   },
+  
+  // Configuración de Twitter
   twitter: {
     card: "summary_large_image",
     title: "FluxForge - Software Development Agency",
     description: "Modern software development solutions for your business",
-    images: ["/images/og-image.jpg"],
+    images: ["/images/fluxforge-logo.png"],
+    creator: "@fluxforge",
   },
+  
+  // Configuración de robots para SEO
   robots: {
     index: true,
     follow: true,
@@ -56,6 +88,24 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  
+  // Configuración adicional de metadatos
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+  },
+  
+  // Configuración de tema
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#000000' },
+  ],
+  
+  // Configuración de aplicación
+  applicationName: 'FluxForge Portfolio',
+  category: 'business',
+  classification: 'Portfolio',
 }
 
 export default function RootLayout({
@@ -65,6 +115,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* Meta tags adicionales para compatibilidad */}
+        <meta name="msapplication-TileColor" content="#000000" />
+        <meta name="msapplication-TileImage" content="/favicons/android-chrome-192x192.png" />
+        <meta name="msapplication-config" content="/browserconfig.xml" />
+        
+        {/* Preconnect para performance */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      </head>
       <body className={`${inter.variable} ${poppins.variable} font-sans antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} disableTransitionOnChange={false}>
           <LanguageProvider>{children}</LanguageProvider>
