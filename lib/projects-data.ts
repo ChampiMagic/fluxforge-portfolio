@@ -25,6 +25,164 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    "id": "laposta-amicizia",
+    "title": "LaPosta Amicizia",
+    "description": "Plataforma de venta y gestión de entradas para el evento musical Amicizia Eterna.",
+    "longDescription": "LaPosta Amicizia es un sistema integral de gestión y venta de entradas creado para \"AMICIZIA ETERNA\" en Santa Ana, Corrientes. Ofrece un flujo completo de compra orientado al cliente —incluyendo lotes de entradas dinámicos, disponibilidad en tiempo real, verificación de edad (18+), pago vía Mercado Pago, envío por correo electrónico con códigos QR y posibilidad de compartir en redes sociales—, además de una interfaz para el personal con escáner para validación de acceso. La PWA cuenta con soporte offline, optimización SEO, mejoras de rendimiento y un diseño responsive tanto en escritorio como en móvil.",
+    "image": "/images/la-posta-logo.png",
+    "images": [
+      "/images/AMICIZIA_ETERNA_background.png",
+      "/images/la-posta-logo.png",
+      "/images/ignacio-tressens.jpeg"
+    ],
+    "category": "web",
+    "technologies": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Radix UI",
+      "Zod",
+      "Axios",
+      "Leaflet",
+      "jsQR",
+      "Mercado Pago"
+    ],
+    "liveUrl": "https://www.laposta.site",
+    "githubUrl": "https://github.com/ChampiMagic/LaPosta_Amicizia",
+    "featured": true,
+    "client": "Lapostagroup",
+    "duration": "2 meses",
+    "teamSize": "2 desarrolladores",
+    "challenge": "Construir una plataforma de extremo a extremo que gestione la venta pública de entradas con niveles de precios dinámicos, disponibilidad en tiempo real y pago seguro, al mismo tiempo que proporcione al personal un sistema de validación de acceso con QR sencillo y eficiente —todo en una PWA de alto rendimiento y con capacidad offline.",
+    "solution": "Desarrollo de una PWA con Next.js que incluye un flujo de compra en varios pasos, integración con Mercado Pago, sondeo en tiempo real, envío de entradas con código QR por correo electrónico y una interfaz móvil optimizada (React + jsQR) para el escaneo y validación por parte del personal; se añadieron soporte offline, optimizaciones SEO y un UI responsive con Tailwind y Radix.",
+    "results": [
+      "500 entradas vendidas en el primer mes",
+      "100 % de validaciones QR exitosas en el acceso",
+      "50 % de aumento en tráfico móvil"
+    ],
+    "timeline": [
+      {
+        "phase": "Descubrimiento y Planificación",
+        "duration": "2 semanas",
+        "description": "Recopilación de requisitos, mapeo de detalles del evento y diseño de la arquitectura técnica"
+      },
+      {
+        "phase": "Diseño y Prototipado",
+        "duration": "2 semanas",
+        "description": "Diseño de UI/UX para el flujo de cliente y el escáner de personal, creación de prototipos interactivos y recogida de feedback"
+      },
+      {
+        "phase": "Desarrollo",
+        "duration": "3 semanas",
+        "description": "Implementación full‑stack del frontend en Next.js, integración con API de backend, módulos de pago y QR"
+      },
+      {
+        "phase": "Pruebas y Lanzamiento",
+        "duration": "1 semana",
+        "description": "Aseguramiento de calidad, ajuste de rendimiento, auditorías PWA y despliegue en producción"
+      }
+    ]
+  }  
+]
+
+export const projectsEN: Project[] = [
+  {
+    "id": "laposta-amicizia",
+    "title": "LaPosta Amicizia",
+    "description": "Event ticketing and management platform for the Amicizia Eterna music event.",
+    "longDescription": "LaPosta Amicizia is a comprehensive event ticketing & management system built for \"AMICIZIA ETERNA\" in Santa Ana, Corrientes. It offers a full customer-facing purchase flow—including dynamic ticket lots, real‑time availability, age verification (18+), payment via Mercado Pago, email delivery with QR codes and social sharing—and a staff‑facing scanner interface for entry validation. The PWA features offline support, SEO optimization, performance optimizations and a responsive design across desktop and mobile." ,
+    "image": "/images/la-posta-logo.png",
+    "images": [
+      "/images/AMICIZIA_ETERNA_background.png",
+      "/images/la-posta-logo.png",
+      "/images/ignacio-tressens.jpeg"
+    ],
+    "category": "web",
+    "technologies": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Radix UI",
+      "Zod",
+      "Axios",
+      "Leaflet",
+      "jsQR",
+      "Mercado Pago"
+    ],
+    "liveUrl": "https://www.laposta.site",
+    "githubUrl": "https://github.com/ChampiMagic/LaPosta_Amicizia",
+    "featured": true,
+    "client": "Lapostagroup",
+    "duration": "2 months",
+    "teamSize": "2 developers",
+    "challenge": "Build an end‑to‑end platform that handles public ticket sales with dynamic pricing tiers, real‑time availability and secure payment, while providing staff with a seamless QR‑based entry validation system—all in a performant, offline‑capable PWA.",
+    "solution": "Developed a Next.js PWA with a multi‑step purchase flow, Mercado Pago integration, real‑time polling, email delivery of QR tickets, and a mobile‑optimized React + jsQR scanner interface for staff; added offline support, SEO optimizations and responsive UI with Tailwind & Radix.",
+    "results": [
+      "500 tickets sold in the first month",
+      "100% successful QR validations at entry",
+      "50% increase in mobile user traffic",
+    ],
+    "timeline": [
+      {
+        "phase": "Discovery & Planning",
+        "duration": "2 weeks",
+        "description": "Requirements gathering, event details mapping and technical architecture design"
+      },
+      {
+        "phase": "Design & Prototyping",
+        "duration": "2 weeks",
+        "description": "UI/UX design for both customer flow and staff scanner, interactive prototypes and feedback"
+      },
+      {
+        "phase": "Development",
+        "duration": "3 weeks",
+        "description": "Full‑stack implementation of Next.js front‑end, backend API integration, payment and QR modules"
+      },
+      {
+        "phase": "Testing & Launch",
+        "duration": "1 weeks",
+        "description": "Quality assurance, performance tuning, PWA audits and production deployment"
+      }
+    ]
+  },
+]
+
+export function getProjectById(id: string): Project | undefined {
+  return projects.find((project) => project.id === id)
+}
+
+export function getProjectENById(id: string): Project | undefined {
+  return projectsEN.find((project) => project.id === id)
+}
+
+export function getRelatedProjects(currentProjectId: string, category: string, limit = 3): Project[] {
+  return projects.filter((project) => project.id !== currentProjectId && project.category === category).slice(0, limit)
+}
+
+export function getRelatedENProjects(currentProjectId: string, category: string, limit = 3): Project[] {
+  return projectsEN.filter((project) => project.id !== currentProjectId && project.category === category).slice(0, limit)
+}
+
+// Helper function to get projects based on language
+export function getProjectsByLanguage(language: "en" | "es"): Project[] {
+  return language === "en" ? projectsEN : projects
+}
+
+// Helper function to get project by ID and language
+export function getProjectByIdAndLanguage(id: string, language: "en" | "es"): Project | undefined {
+  return language === "en" ? getProjectENById(id) : getProjectById(id)
+}
+
+// Helper function to get related projects by language
+export function getRelatedProjectsByLanguage(currentProjectId: string, category: string, language: "en" | "es", limit = 3): Project[] {
+  return language === "en" ? getRelatedENProjects(currentProjectId, category, limit) : getRelatedProjects(currentProjectId, category, limit)
+}
+
+// DATA EXAMPLE
+/*
+{
     id: "ecocommerce-platform",
     title: "EcoCommerce Platform",
     description: "A sustainable e-commerce platform with AI-powered recommendations and carbon footprint tracking.",
@@ -342,12 +500,4 @@ export const projects: Project[] = [
       },
     ],
   },
-]
-
-export function getProjectById(id: string): Project | undefined {
-  return projects.find((project) => project.id === id)
-}
-
-export function getRelatedProjects(currentProjectId: string, category: string, limit = 3): Project[] {
-  return projects.filter((project) => project.id !== currentProjectId && project.category === category).slice(0, limit)
-}
+*/

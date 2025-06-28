@@ -35,19 +35,19 @@ export function ContactSection() {
     {
       icon: Mail,
       title: t("contact.info.email"),
-      value: "hello@fluxforge.dev",
-      href: "mailto:hello@fluxforge.dev",
+      value: "hgazze0@gmail.com",
+      href: "mailto:hgazze0@gmail.com",
     },
     {
       icon: Phone,
       title: t("contact.info.phone"),
-      value: "+1 (555) 123-4567",
-      href: "tel:+15551234567",
+      value: "+54 37943886865",
+      href: "tel:+5437943886865",
     },
     {
       icon: MapPin,
       title: t("contact.info.location"),
-      value: "San Francisco, CA",
+      value: "Buenos Aires, Argentina",
       href: "#",
     },
   ]

@@ -8,10 +8,10 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { useLanguage } from "@/components/language-provider"
-import { projects as allProjects } from "@/lib/projects-data"
+import { getProjectsByLanguage } from "@/lib/projects-data"
 
 export function PortfolioSection() {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
 
   // ---- State & Filtering ----
   const [activeFilter, setActiveFilter] = useState<"all" | "web" | "mobile" | "cloud">("all")
@@ -23,11 +23,12 @@ export function PortfolioSection() {
     { id: "cloud", label: t("projects.filter.cloud") },
   ] as const
 
+  const allProjects = getProjectsByLanguage(language)
   const projects = activeFilter === "all" ? allProjects : allProjects.filter((p) => p.category === activeFilter)
+  const featuredProjects = projects.filter((p) => p.featured).slice(0, 6)
 
-  // ---- UI ----
   return (
-    <section id="portfolio" className="section-padding">
+    <section id="portfolio" className="section-padding bg-neutral-light/30">
       <div className="container-custom">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -38,30 +39,30 @@ export function PortfolioSection() {
 
         {/* Filters */}
         <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {filters.map((f) => (
+          {filters.map((filter) => (
             <Button
-              key={f.id}
-              onClick={() => setActiveFilter(f.id)}
-              variant={activeFilter === f.id ? "default" : "outline"}
-              className={`rounded-full px-6 py-2 transition-all duration-300 ${
-                activeFilter === f.id
+              key={filter.id}
+              variant={activeFilter === filter.id ? "default" : "outline"}
+              onClick={() => setActiveFilter(filter.id)}
+              className={`rounded-full px-6 py-3 transition-all duration-300 ${
+                activeFilter === filter.id
                   ? "bg-primary text-white shadow-lg"
                   : "border-primary text-primary hover:bg-primary hover:text-white"
               }`}
             >
-              {f.label}
+              {filter.label}
             </Button>
           ))}
         </div>
 
         {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project) => (
-            <Card key={project.id} className="border-0 shadow-lg card-hover bg-white rounded-2xl overflow-hidden group">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          {featuredProjects.map((project) => (
+            <Card key={project.id} className="group py-0 border-0 shadow-lg card-hover bg-white rounded-2xl overflow-hidden">
               {/* Image + overlay */}
               <div className="relative overflow-hidden">
                 <Image
-                  src={project.image || "/placeholder.svg"}
+                  src={project.image}
                   alt={project.title}
                   width={600}
                   height={400}
@@ -142,12 +143,12 @@ export function PortfolioSection() {
           ))}
         </div>
 
-        {/* View-all button */}
-        <div className="text-center mt-12">
-          <Button asChild className="btn-primary">
+        {/* View All Button */}
+        <div className="text-center">
+          <Button className="btn-primary group" asChild>
             <Link href="/projects">
               {t("portfolio.view_all")}
-              <ArrowRight className="ml-2 h-4 w-4" />
+              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </Button>
         </div>

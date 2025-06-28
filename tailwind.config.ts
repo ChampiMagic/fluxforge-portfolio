@@ -18,17 +18,15 @@ const config: Config = {
       },
     },
     extend: {
-      colors: {
-        primary: "#04395E",
-        accent: "#00B5D8",
-        neutral: {
-          light: "#F4F4F4",
-          white: "#FFFFFF",
-        },
-      },
       fontFamily: {
         sans: ["var(--font-inter)"],
         heading: ["var(--font-poppins)"],
+      },
+      colors: {
+        primary: "#04395e",
+        accent: "#00b5d8",
+        "neutral-light": "#f4f4f4",
+        "neutral-white": "#ffffff",
       },
       keyframes: {
         "accordion-down": {
@@ -39,10 +37,20 @@ const config: Config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "float": {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-20px)" },
+        },
+        "fadeIn": {
+          from: { opacity: "0", transform: "translateY(30px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "float": "float 6s ease-in-out infinite",
+        "fade-in": "fadeIn 0.6s ease-out forwards",
       },
     },
   },

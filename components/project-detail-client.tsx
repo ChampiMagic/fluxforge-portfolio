@@ -1,24 +1,36 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowLeft, ExternalLink, Github, Users, Building, Clock, ArrowRight } from "lucide-react"
+import { ArrowLeft, ExternalLink, Github, Building, Clock, Users, Calendar, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { useLanguage } from "@/components/language-provider"
-import { type Project, getRelatedProjects } from "@/lib/projects-data"
+import { getProjectByIdAndLanguage, getRelatedProjectsByLanguage } from "@/lib/projects-data"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
+import type { Project } from "@/lib/projects-data"
 
 interface ProjectDetailClientProps {
   project: Project
 }
 
-export function ProjectDetailClient({ project }: ProjectDetailClientProps) {
-  const { t } = useLanguage()
-  const relatedProjects = getRelatedProjects(project.id, project.category)
+export function ProjectDetailClient({ project: initialProject }: ProjectDetailClientProps) {
+  const { t, language } = useLanguage()
+  const [project, setProject] = useState(initialProject)
+
+  // Update project when language changes
+  useEffect(() => {
+    const updatedProject = getProjectByIdAndLanguage(project.id, language)
+    if (updatedProject) {
+      setProject(updatedProject)
+    }
+  }, [language, project.id])
+
+  const relatedProjects = getRelatedProjectsByLanguage(project.id, project.category, language)
 
   return (
     <>
@@ -37,29 +49,48 @@ export function ProjectDetailClient({ project }: ProjectDetailClientProps) {
               </Link>
 
               <div className="grid lg:grid-cols-2 gap-12 items-center">
+                {/* Project Info */}
                 <div>
-                  <div className="flex items-center gap-3 mb-4">
-                    <Badge className="bg-accent/10 text-accent border-accent/20 capitalize">{project.category}</Badge>
+                  <div className="flex items-center space-x-3 mb-4">
+                    <Badge variant="secondary" className="bg-accent/10 text-accent border-accent/20">
+                      {t(`common.${project.category}_development`)}
+                    </Badge>
                     {project.featured && (
-                      <Badge className="bg-primary/10 text-primary border-primary/20">Featured</Badge>
+                      <Badge variant="default" className="bg-primary text-white">
+                        {t("portfolio.featured")}
+                      </Badge>
                     )}
                   </div>
-                  <h1 className="text-4xl md:text-5xl font-heading font-bold mb-6 text-primary">{project.title}</h1>
-                  <p className="text-xl text-gray-600 mb-8 leading-relaxed">{project.longDescription}</p>
 
-                  <div className="flex flex-wrap gap-4">
+                  <h1 className="text-4xl md:text-5xl font-heading font-bold mb-6 text-primary">
+                    {project.title}
+                  </h1>
+
+                  <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+                    {project.description}
+                  </p>
+
+                  <div className="flex flex-wrap gap-3 mb-8">
+                    {project.technologies.map((tech) => (
+                      <Badge key={tech} variant="outline" className="border-gray-300 text-gray-700">
+                        {tech}
+                      </Badge>
+                    ))}
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row gap-4">
                     {project.liveUrl && (
-                      <Button className="btn-primary" asChild>
+                      <Button className="btn-primary group" asChild>
                         <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                          <ExternalLink className="h-4 w-4 mr-2" />
+                          <ExternalLink className="mr-2 h-4 w-4" />
                           {t("project.live")}
                         </a>
                       </Button>
                     )}
                     {project.githubUrl && (
-                      <Button variant="outline" className="btn-outline bg-transparent" asChild>
+                      <Button variant="outline" className="btn-outline group" asChild>
                         <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                          <Github className="h-4 w-4 mr-2" />
+                          <Github className="mr-2 h-4 w-4" />
                           {t("project.github")}
                         </a>
                       </Button>
@@ -67,14 +98,17 @@ export function ProjectDetailClient({ project }: ProjectDetailClientProps) {
                   </div>
                 </div>
 
+                {/* Project Image */}
                 <div className="relative">
-                  <Image
-                    src={project.image || "/placeholder.svg"}
-                    alt={project.title}
-                    width={600}
-                    height={400}
-                    className="w-full h-auto rounded-2xl shadow-2xl"
-                  />
+                  <div className="aspect-square rounded-2xl overflow-hidden shadow-2xl">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      width={600}
+                      height={600}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -124,14 +158,16 @@ export function ProjectDetailClient({ project }: ProjectDetailClientProps) {
                     <h2 className="text-3xl font-heading font-bold mb-6 text-primary">{t("project.timeline")}</h2>
                     <div className="space-y-6">
                       {project.timeline.map((phase, index) => (
-                        <div key={index} className="flex items-start space-x-4">
-                          <div className="flex-shrink-0 w-8 h-8 bg-accent rounded-full flex items-center justify-center text-white font-bold text-sm">
-                            {index + 1}
+                        <div key={index} className="flex space-x-6">
+                          <div className="flex-shrink-0">
+                            <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center text-white font-bold">
+                              {index + 1}
+                            </div>
                           </div>
                           <div className="flex-1">
-                            <div className="flex items-center gap-3 mb-2">
-                              <h3 className="font-heading font-bold text-primary">{phase.phase}</h3>
-                              <Badge variant="secondary" className="bg-neutral-light text-primary border-0 text-xs">
+                            <div className="flex items-center space-x-3 mb-2">
+                              <h3 className="text-xl font-heading font-bold text-primary">{phase.phase}</h3>
+                              <Badge variant="outline" className="text-sm">
                                 {phase.duration}
                               </Badge>
                             </div>
@@ -180,14 +216,12 @@ export function ProjectDetailClient({ project }: ProjectDetailClientProps) {
                   {/* Technologies */}
                   <Card className="border-0 shadow-lg rounded-2xl">
                     <CardHeader>
-                      <CardTitle className="text-xl font-heading font-bold text-primary">
-                        {t("project.technologies")}
-                      </CardTitle>
+                      <CardTitle className="text-xl font-heading font-bold text-primary">{t("project.technologies")}</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <div className="flex flex-wrap gap-2">
-                        {project.technologies.map((tech, index) => (
-                          <Badge key={index} variant="secondary" className="bg-neutral-light text-primary border-0">
+                        {project.technologies.map((tech) => (
+                          <Badge key={tech} variant="outline" className="border-gray-300 text-gray-700">
                             {tech}
                           </Badge>
                         ))}
@@ -205,10 +239,8 @@ export function ProjectDetailClient({ project }: ProjectDetailClientProps) {
           <section className="section-padding bg-neutral-light/30">
             <div className="container-custom">
               <div className="max-w-6xl mx-auto">
-                <h2 className="text-3xl font-heading font-bold mb-12 text-center text-primary">
-                  {t("project.related")}
-                </h2>
-                <div className="grid md:grid-cols-3 gap-8">
+                <h2 className="text-3xl font-heading font-bold mb-12 text-center text-primary">{t("project.related")}</h2>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {relatedProjects.map((relatedProject) => (
                     <Card
                       key={relatedProject.id}
@@ -216,7 +248,7 @@ export function ProjectDetailClient({ project }: ProjectDetailClientProps) {
                     >
                       <div className="relative overflow-hidden">
                         <Image
-                          src={relatedProject.image || "/placeholder.svg"}
+                          src={relatedProject.image}
                           alt={relatedProject.title}
                           width={400}
                           height={250}
@@ -241,8 +273,9 @@ export function ProjectDetailClient({ project }: ProjectDetailClientProps) {
             </div>
           </section>
         )}
+
+        <Footer />
       </main>
-      <Footer />
     </>
   )
 }

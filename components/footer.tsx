@@ -22,7 +22,15 @@ export function Footer() {
           {/* Brand */}
           <div className="md:col-span-2">
             <Link href="/" className="flex items-center space-x-2 mb-4">
-              <Image src="/images/fluxforge-logo.png" alt="FluxForge Logo" width={50} height={50} className="w-10 h-10"/>
+              <div className="w-10 h-10 bg-gray-100 rounded-lg shadow-[inset_0_3px_6px_rgba(0,0,0,0.2),inset_0_-1px_3px_rgba(255,255,255,1)] border border-gray-300 flex items-center justify-center">
+                <Image 
+                  src="/images/fluxforge-logo.png" 
+                  alt="FluxForge Logo" 
+                  width={50} 
+                  height={50}  
+                  className="w-10 h-10"
+                />
+              </div>
               <span className="font-heading font-bold text-xl">FluxForge</span>
             </Link>
             <p className="text-gray-300 mb-6 max-w-md">{t("footer.description")}</p>

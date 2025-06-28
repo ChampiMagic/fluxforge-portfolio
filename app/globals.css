@@ -84,6 +84,39 @@
 }
 
 @layer components {
+  /* Custom color classes */
+  .bg-primary {
+    background-color: var(--primary);
+  }
+  
+  .text-primary {
+    color: var(--primary);
+  }
+  
+  .border-primary {
+    border-color: var(--primary);
+  }
+  
+  .bg-accent {
+    background-color: var(--accent);
+  }
+  
+  .text-accent {
+    color: var(--accent);
+  }
+  
+  .border-accent {
+    border-color: var(--accent);
+  }
+  
+  .bg-neutral-light {
+    background-color: var(--neutral-light);
+  }
+  
+  .text-neutral-light {
+    color: var(--neutral-light);
+  }
+
   .btn-primary {
     @apply bg-primary hover:bg-primary/90 text-white font-medium px-6 py-3 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105;
   }

@@ -1,16 +1,18 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
-import { getProjectById } from "@/lib/projects-data"
+import { getProjectByIdAndLanguage } from "@/lib/projects-data"
 import { ProjectDetailClient } from "@/components/project-detail-client"
 
 interface ProjectPageProps {
-  params: {
+  params: Promise<{
     id: string
-  }
+  }>
 }
 
 export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
-  const project = getProjectById(params.id)
+  const { id } = await params
+  // Default to English for metadata since we don't have access to language context here
+  const project = getProjectByIdAndLanguage(id, "en")
 
   if (!project) {
     return {
@@ -37,8 +39,10 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   }
 }
 
-export default function ProjectPage({ params }: ProjectPageProps) {
-  const project = getProjectById(params.id)
+export default async function ProjectPage({ params }: ProjectPageProps) {
+  const { id } = await params
+  // Default to English for server-side rendering, the client component will handle language switching
+  const project = getProjectByIdAndLanguage(id, "en")
 
   if (!project) {
     notFound()
