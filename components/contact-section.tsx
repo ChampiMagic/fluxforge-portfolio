@@ -35,8 +35,8 @@ export function ContactSection() {
     {
       icon: Mail,
       title: t("contact.info.email"),
-      value: "hgazze0@gmail.com",
-      href: "mailto:hgazze0@gmail.com",
+      value: "fluxforgeagency@gmail.com",
+      href: "mailto:fluxforgeagency@gmail.com",
     },
     {
       icon: Phone,

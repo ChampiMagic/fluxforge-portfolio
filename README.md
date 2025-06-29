@@ -306,7 +306,7 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más det
 
 ## 📞 Contacto
 
-- **Email**: hgazze0@gmail.com
+- **Email**: fluxforgeagency@gmail.com
 - **Teléfono**: +54 37943886865
 - **Ubicación**: Buenos Aires, Argentina
 
